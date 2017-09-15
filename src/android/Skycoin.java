@@ -24,12 +24,13 @@ public class Skycoin extends CordovaPlugin {
 
             return true;
         } else if ("GetBalances".equals(action)) {
-            final String addresses = args.getString(0);
+            final String seed = args.getString(0);
+            final Integer addresses = args.getInt(1);
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     try {
                         String res = null;
-                        res = Mobile.getBalances(addresses);
+                        res = Mobile.getBalances(seed, addresses);
                         System.out.println(res);
                         callbackContext.success(res);
                     } catch (Exception e) {

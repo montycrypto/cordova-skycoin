@@ -1,6 +1,6 @@
 {
   "name": "cordova-skycoin-liteclient",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Skycoin Cordova Plugin",
   "cordova": {
     "id": "skycoin",
