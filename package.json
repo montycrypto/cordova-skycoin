@@ -1,12 +1,12 @@
 {
-  "name": "skycoin",
-  "version": "1.0.0",
-  "description": "Skycoin Plugin",
+  "name": "cordova-skycoin-liteclient",
+  "version": "1.0.1",
+  "description": "Skycoin Cordova Plugin",
   "cordova": {
     "id": "skycoin",
     "platforms": [
       "android"
     ]
   },
-  "author": "xano8437"
+  "author": "montycrypto"
 }
