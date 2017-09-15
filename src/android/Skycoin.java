@@ -23,6 +23,17 @@ public class Skycoin extends CordovaPlugin {
             };
 
             return true;
+        } else if ("GetSeed".equals(action)) {
+            try {
+                String res = Mobile.getSeed();
+                System.out.println(res);
+                callbackContext.success(res);
+            } catch (Exception e) {
+                e.printStackTrace();
+                callbackContext.error("GetSeed failed");
+            };
+
+            return true;
         } else if ("GetBalances".equals(action)) {
             final String seed = args.getString(0);
             final Integer addresses = args.getInt(1);
