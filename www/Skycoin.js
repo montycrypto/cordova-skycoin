@@ -1,21 +1,17 @@
 var exec = require('cordova/exec');
 
 var Skycoin = {
-  getAddresses: function(successCallback, errorCallback, args) {
+  generateAddresses: function(successCallback, errorCallback, args) {
     console.log('retrieving addresses');
-    exec(successCallback, errorCallback, "Skycoin", "GetAddresses", args);
+    exec(successCallback, errorCallback, "Skycoin", "GenerateAddresses", args);
   },
-  getBalances: function(successCallback, errorCallback, args) {
-    console.log('retrieving addresses with balance');
-    exec(successCallback, errorCallback, "Skycoin", "GetBalances", args);
-  },
-  getSeed: function(successCallback, errorCallback, args) {
+  generateSeed: function(successCallback, errorCallback, args) {
       console.log('retrieving new seed');
-      exec(successCallback, errorCallback, "Skycoin", "GetSeed", args);
+      exec(successCallback, errorCallback, "Skycoin", "GenerateSeed", args);
   },
-  postTransaction: function(successCallback, errorCallback, args) {
+  prepareTransaction: function(successCallback, errorCallback, args) {
     console.log('creating transaction');
-    exec(successCallback, errorCallback, "Skycoin", "PostTransaction", args);
+    exec(successCallback, errorCallback, "Skycoin", "PrepareTransaction", args);
   },
 };
 

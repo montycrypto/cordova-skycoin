@@ -12,9 +12,9 @@ import mobile.*;
 public class Skycoin extends CordovaPlugin {
     @Override
     public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
-        if ("GetAddresses".equals(action)) {
+        if ("GenerateAddresses".equals(action)) {
             try {
-                String res = Mobile.getAddresses(args.getString(0), args.getInt(1));
+                String res = Mobile.GenerateAddresses(args.getString(0), args.getInt(1));
                 System.out.println(res);
                 callbackContext.success(res);
             } catch (Exception e) {
@@ -23,9 +23,9 @@ public class Skycoin extends CordovaPlugin {
             };
 
             return true;
-        } else if ("GetSeed".equals(action)) {
+        } else if ("GenerateSeed".equals(action)) {
             try {
-                String res = Mobile.getSeed();
+                String res = Mobile.GenerateSeed();
                 System.out.println(res);
                 callbackContext.success(res);
             } catch (Exception e) {
@@ -34,34 +34,14 @@ public class Skycoin extends CordovaPlugin {
             };
 
             return true;
-        } else if ("GetBalances".equals(action)) {
-            final String seed = args.getString(0);
-            final Integer addresses = args.getInt(1);
+        } else if ("PrepareTransaction".equals(action)) {
+            final String inputs = args.getString(0);
+            final String outputs = args.getString(1);
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     try {
                         String res = null;
-                        res = Mobile.getBalances(seed, addresses);
-                        System.out.println(res);
-                        callbackContext.success(res);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        callbackContext.error("GetBalances failed");
-                    }
-                }
-            });
-
-            return true;
-        } else if ("PostTransaction".equals(action)) {
-            final String seed = args.getString(0);
-            final Integer addresses = args.getInt(1);
-            final String destinationAddress = args.getString(2);
-            final Integer amount = args.getInt(3);
-            cordova.getThreadPool().execute(new Runnable() {
-                public void run() {
-                    try {
-                        String res = null;
-                        res = Mobile.postTransaction(seed, addresses, destinationAddress, amount);
+                        res = Mobile.postTransaction(inputs, outputs);
                         System.out.println(res);
                         callbackContext.success(res);
                     } catch (Exception e) {
