@@ -7,14 +7,14 @@ import org.json.JSONException;
 
 import android.os.Environment;
 
-import mobile.*;
+import mobile.Mobile;
 
 public class Skycoin extends CordovaPlugin {
     @Override
     public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
         if ("GenerateAddresses".equals(action)) {
             try {
-                String res = Mobile.GenerateAddresses(args.getString(0), args.getInt(1));
+                String res = Mobile.generateAddresses(args.getString(0), args.getInt(1));
                 System.out.println(res);
                 callbackContext.success(res);
             } catch (Exception e) {
@@ -25,7 +25,7 @@ public class Skycoin extends CordovaPlugin {
             return true;
         } else if ("GenerateSeed".equals(action)) {
             try {
-                String res = Mobile.GenerateSeed();
+                String res = Mobile.getSeed();
                 System.out.println(res);
                 callbackContext.success(res);
             } catch (Exception e) {
@@ -41,7 +41,7 @@ public class Skycoin extends CordovaPlugin {
                 public void run() {
                     try {
                         String res = null;
-                        res = Mobile.postTransaction(inputs, outputs);
+                        res = Mobile.prepareTransaction(inputs, outputs);
                         System.out.println(res);
                         callbackContext.success(res);
                     } catch (Exception e) {
