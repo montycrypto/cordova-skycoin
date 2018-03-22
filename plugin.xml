@@ -23,7 +23,7 @@
 
     <framework src="src/android/skycoin.gradle" custom="true" type="gradleReference" />
 
-    <resource-file src="libs/mobile.aar" target="libs/mobile.aar" />
+    <lib-file src="libs/mobile.aar" target="libs/mobile.aar" />
   </platform>
 </plugin>
 
